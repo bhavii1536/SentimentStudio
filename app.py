@@ -39,27 +39,29 @@ st.markdown('<div class="main-title">💬 Sentiment Studio</div>', unsafe_allow_
 st.markdown('<div class="sub-title">A Real-Time Social Media Opinion Dashboard using Machine Learning</div>', unsafe_allow_html=True)
 st.markdown("")
 
-# Columns for platforms
-col1, col2, col3 = st.columns(3)
-
+# First Row: Twitter, Reddit
+col1, col2 = st.columns(2)
 with col1:
     st.markdown('<div class="card"><div class="emoji">🐦</div><h3>Twitter</h3><p>Analyze trending tweets and hashtags in real time.</p></div>', unsafe_allow_html=True)
-
 with col2:
     st.markdown('<div class="card"><div class="emoji">👽</div><h3>Reddit</h3><p>See what Reddit communities are buzzing about.</p></div>', unsafe_allow_html=True)
 
+# Second Row: Instagram, YouTube
+col3, col4 = st.columns(2)
 with col3:
     st.markdown('<div class="card"><div class="emoji">📸</div><h3>Instagram</h3><p>Capture sentiment from captions, likes & comments.</p></div>', unsafe_allow_html=True)
+with col4:
+    st.markdown('<div class="card"><div class="emoji">🎥</div><h3>YouTube</h3><p>Analyze video titles, descriptions & comments to get public opinion.</p></div>', unsafe_allow_html=True)
 
+# Divider
 st.markdown("---")
 
-# Coming Soon Section
+# Coming Soon
 st.markdown("### 🚀 What's Coming Next?")
-st.markdown("- ✅ Live API-based data fetching from Twitter, Reddit, Instagram")
-st.markdown("- ✅ Real-time sentiment classification using ML")
-st.markdown("- ✅ Visual charts, word clouds & alerts for brands")
-st.markdown("- ✅ Multi-platform analytics in a single view")
+st.markdown("- ✅ Live API-based data fetching from **Twitter, Reddit, Instagram, YouTube**")
+st.markdown("- ✅ Real-time sentiment prediction using Machine Learning")
+st.markdown("- ✅ Visual analytics, word clouds, trend tracking")
+st.markdown("- ✅ Unified dashboard with platform filtering")
+
 st.markdown("---")
-
-st.markdown("💡 *This is an early version. The engine behind the magic is coming soon!*")
-
+st.markdown("💡 *Made with ☕, ML & emojis by Bhavii 💜*")
