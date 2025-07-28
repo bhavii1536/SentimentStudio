@@ -1,48 +1,65 @@
 import streamlit as st
 from PIL import Image
 
-# Set Streamlit page config
+# Page config
 st.set_page_config(page_title="Sentiment Studio 💬", layout="wide")
 
-# Title and Subheader
-st.title("💬 Sentiment Studio")
-st.subheader("Real-Time Social Media Opinion Dashboard Using Machine Learning")
+# Custom styling
+st.markdown("""
+    <style>
+        .main-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #6C63FF;
+            text-align: center;
+        }
+        .sub-title {
+            font-size: 1.5rem;
+            color: #444;
+            text-align: center;
+        }
+        .card {
+            padding: 1.5rem;
+            background-color: #ffffffdd;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .card h3 {
+            color: #6C63FF;
+        }
+        .emoji {
+            font-size: 2rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
-# Sidebar Navigation
-st.sidebar.title("📌 Navigation")
-section = st.sidebar.radio("Go to", ["Home", "Platform Insights", "Upload Data", "About"])
+# Main Titles
+st.markdown('<div class="main-title">💬 Sentiment Studio</div>', unsafe_allow_html=True)
+st.markdown('<div class="sub-title">A Real-Time Social Media Opinion Dashboard using Machine Learning</div>', unsafe_allow_html=True)
+st.markdown("")
 
-# Home Section
-if section == "Home":
-    st.markdown("### 🌟 Welcome to Sentiment Studio!")
-    st.success("This tool helps you analyze public sentiment from platforms like Twitter, Reddit, and Instagram.")
-    st.info("⚙️ Features coming soon: Real-time scraping, sentiment prediction, beautiful graphs!")
+# Columns for platforms
+col1, col2, col3 = st.columns(3)
 
-# Platform Insights Section
-elif section == "Platform Insights":
-    st.markdown("### 📊 Social Media Sentiment Insights")
-    st.warning("Feature under development. Stay tuned!")
+with col1:
+    st.markdown('<div class="card"><div class="emoji">🐦</div><h3>Twitter</h3><p>Analyze trending tweets and hashtags in real time.</p></div>', unsafe_allow_html=True)
 
-# Upload Data Section
-elif section == "Upload Data":
-    st.markdown("### 📁 Upload CSV File for Analysis")
-    uploaded_file = st.file_uploader("Upload a CSV file with text data (e.g., tweets or comments):", type="csv")
-    if uploaded_file:
-        import pandas as pd
-        df = pd.read_csv(uploaded_file)
-        st.write("📄 Uploaded Data:")
-        st.dataframe(df.head())
+with col2:
+    st.markdown('<div class="card"><div class="emoji">👽</div><h3>Reddit</h3><p>See what Reddit communities are buzzing about.</p></div>', unsafe_allow_html=True)
 
-# About Section
-elif section == "About":
-    st.markdown("### ℹ️ About This Project")
-    st.markdown("""
-    **Sentiment Studio** is your real-time dashboard for analyzing public emotions across multiple social media platforms 🌍💡  
-    Built using **Python + Streamlit + Machine Learning + NLP** ❤️  
-    """)
-    st.markdown("Made with ☕ & ❤️ by **Bhavii1536**")
+with col3:
+    st.markdown('<div class="card"><div class="emoji">📸</div><h3>Instagram</h3><p>Capture sentiment from captions, likes & comments.</p></div>', unsafe_allow_html=True)
 
-# Footer
 st.markdown("---")
-st.markdown("💡 *This is an academic project. Live APIs, ML models, and dashboards coming soon!*")
+
+# Coming Soon Section
+st.markdown("### 🚀 What's Coming Next?")
+st.markdown("- ✅ Live API-based data fetching from Twitter, Reddit, Instagram")
+st.markdown("- ✅ Real-time sentiment classification using ML")
+st.markdown("- ✅ Visual charts, word clouds & alerts for brands")
+st.markdown("- ✅ Multi-platform analytics in a single view")
+st.markdown("---")
+
+st.markdown("💡 *This is an early version. The engine behind the magic is coming soon!*")
 
