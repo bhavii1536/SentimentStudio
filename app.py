@@ -1,13 +1,10 @@
 import streamlit as st
 
-# Page config
 st.set_page_config(page_title="Sentiment Studio", layout="wide")
 
-# ---- Login data ----
 VALID_EMAIL = "testuser@example.com"
 VALID_PASSWORD = "Test@1234"
 
-# ---- CSS styles ----
 st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
@@ -80,19 +77,21 @@ st.markdown("""
             color: #ffe4f7;
             min-height: 40px;
             font-weight: 600;
+            text-align: center;
         }
-        /* Login form styles */
+        /* Smaller login box */
         .login-container {
             background: rgba(255,255,255,0.1);
-            padding: 3rem 4rem;
+            padding: 2rem 2.5rem;
             border-radius: 20px;
             box-shadow: 0 0 30px rgba(255,111,216,0.5);
-            width: 400px;
+            width: 320px;
+            margin: auto;
         }
         input[type="text"], input[type="password"] {
             width: 100%;
-            padding: 0.8rem 1rem;
-            margin: 0.5rem 0 1.5rem 0;
+            padding: 0.7rem 1rem;
+            margin: 0.5rem 0 1.2rem 0;
             border-radius: 10px;
             border: none;
             font-size: 1rem;
@@ -124,14 +123,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ----------- SESSION STATE SETUP ------------
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
-# ---- LOGIN PAGE ----
 def login_page():
     st.markdown('<div class="login-container">', unsafe_allow_html=True)
-    st.markdown('<h2 style="color:#f8bbd0; margin-bottom: 1.5rem;">Login to Sentiment Studio</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="color:#f8bbd0; margin-bottom: 1rem;">Login to Sentiment Studio</h2>', unsafe_allow_html=True)
 
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
@@ -146,7 +143,6 @@ def login_page():
             st.error("Invalid email or password. Try again.")
     st.markdown('</div>', unsafe_allow_html=True)
 
-# ---- DASHBOARD PAGE ----
 def dashboard():
     st.markdown('<div class="container">', unsafe_allow_html=True)
     st.markdown('<h1>Sentiment Studio</h1>', unsafe_allow_html=True)
@@ -182,7 +178,6 @@ def dashboard():
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-# -------- MAIN LOGIC --------
 if not st.session_state.logged_in:
     login_page()
 else:
