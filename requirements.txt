@@ -1,1 +1,8 @@
-
+streamlit
+nltk
+scikit-learn
+pandas
+matplotlib
+wordcloud
+tweepy
+praw
