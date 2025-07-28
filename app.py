@@ -9,17 +9,24 @@ st.markdown("""
         /* Background gradient dark neon */
         body, .stApp {
             background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
-            color: #eee;
+            color: #00fff7 !important;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        /* Center all content */
+        /* Container that centers all content */
         .main-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            gap: 2rem;
+            gap: 3rem;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
         }
         /* Neon glowing title */
         .main-title {
@@ -32,16 +39,15 @@ st.markdown("""
                 0 0 20px #00fff7,
                 0 0 40px #0ff,
                 0 0 80px #0ff;
-            text-align: center;
+            margin: 0;
         }
         /* Subheading */
         .sub-title {
             font-size: 1.6rem;
             color: #a0f0f8;
-            text-align: center;
-            margin-bottom: 3rem;
             font-weight: 600;
             letter-spacing: 1.5px;
+            margin: 0;
         }
         /* Neon popup buttons */
         .neon-button {
@@ -58,6 +64,7 @@ st.markdown("""
                 0 0 5px #00fff7,
                 0 0 10px #00fff7,
                 0 0 20px #00fff7;
+            min-width: 160px;
         }
         .neon-button:hover {
             background: #00fff7;
@@ -75,7 +82,13 @@ st.markdown("""
             gap: 2rem;
             flex-wrap: wrap;
             justify-content: center;
-            max-width: 900px;
+            width: 100%;
+        }
+        /* Streamlit info box styling override for dark bg */
+        .stAlert > div {
+            background-color: #003333 !important;
+            color: #00fff7 !important;
+            border-radius: 10px !important;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -91,22 +104,22 @@ st.markdown('<p class="sub-title">Real-Time Social Media Opinion Dashboard<br>Po
 st.markdown('<div class="button-container">', unsafe_allow_html=True)
 
 # Platform buttons
-if st.button("🐦 Twitter"):
+if st.button("🐦 Twitter", key="twitter"):
     st.info("Twitter data fetching coming soon! 🚀")
 
-if st.button("👽 Reddit"):
+if st.button("👽 Reddit", key="reddit"):
     st.info("Reddit data fetching coming soon! 🚀")
 
-if st.button("📸 Instagram"):
+if st.button("📸 Instagram", key="instagram"):
     st.info("Instagram data fetching coming soon! 🚀")
 
-if st.button("🎥 YouTube"):
+if st.button("🎥 YouTube", key="youtube"):
     st.info("YouTube data fetching coming soon! 🚀")
 
-if st.button("🎵 TikTok"):
+if st.button("🎵 TikTok", key="tiktok"):
     st.info("TikTok data fetching coming soon! 🚀")
 
-if st.button("💼 LinkedIn"):
+if st.button("💼 LinkedIn", key="linkedin"):
     st.info("LinkedIn data fetching coming soon! 🚀")
 
 # Buttons container end
