@@ -1,134 +1,111 @@
 import streamlit as st
 
-st.set_page_config(page_title="Sentiment Studio 💬", layout="wide")
+# Page config
+st.set_page_config(page_title="Sentiment Studio", layout="wide")
 
+# CSS styles for dark, edgy, aesthetic look
 st.markdown("""
-<style>
-/* Make the entire app take full screen and center content */
-body, .stApp {
-    height: 100vh;
-    margin: 0;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
-    color: #00fff7 !important;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Wrapper container to stack items vertically */
-.main-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    width: 100%;
-    max-width: 900px;
-    text-align: center;
-    padding: 2rem;
-}
-
-/* Neon glowing title */
-.main-title {
-    font-size: 3.8rem;
-    font-weight: 900;
-    color: #00fff7;
-    text-shadow:
-        0 0 5px #00fff7,
-        0 0 10px #00fff7,
-        0 0 20px #00fff7,
-        0 0 40px #0ff,
-        0 0 80px #0ff;
-    margin: 0;
-}
-
-/* Subheading */
-.sub-title {
-    font-size: 1.6rem;
-    color: #a0f0f8;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    margin: 0;
-}
-
-/* Neon popup buttons */
-.neon-button {
-    background: transparent;
-    border: 2px solid #00fff7;
-    border-radius: 15px;
-    padding: 1.2rem 2.5rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #00fff7;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-    box-shadow:
-        0 0 5px #00fff7,
-        0 0 10px #00fff7,
-        0 0 20px #00fff7;
-    min-width: 160px;
-}
-.neon-button:hover {
-    background: #00fff7;
-    color: #023737;
-    box-shadow:
-        0 0 15px #00fff7,
-        0 0 30px #00fff7,
-        0 0 40px #00fff7,
-        0 0 80px #00fff7;
-    transform: scale(1.05);
-}
-
-/* Container for buttons */
-.button-container {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-}
-
-/* Override Streamlit info box for dark bg */
-.stAlert > div {
-    background-color: #003333 !important;
-    color: #00fff7 !important;
-    border-radius: 10px !important;
-}
-</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+        body, .stApp {
+            background-color: #121212;
+            color: #e0e0e0 !important;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            max-width: 900px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #9c27b0;
+            text-shadow: 0 0 10px #9c27b0;
+            margin-bottom: 0.2rem;
+        }
+        h3 {
+            color: #00bcd4;
+            font-weight: 500;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 8px #00bcd4;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.8rem;
+        }
+        .btn {
+            background: transparent;
+            border: 2px solid #9c27b0;
+            border-radius: 12px;
+            padding: 1.2rem 1.8rem;
+            font-size: 1.3rem;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px #9c27b0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-weight: 600;
+        }
+        .btn:hover {
+            background: #9c27b0;
+            box-shadow: 0 0 15px #9c27b0;
+            transform: scale(1.05);
+            color: white;
+        }
+        .emoji {
+            font-size: 1.5rem;
+        }
+        .info {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: #bbb;
+            min-height: 40px;
+        }
+    </style>
 """, unsafe_allow_html=True)
 
-# Main content container start
-st.markdown('<div class="main-container">', unsafe_allow_html=True)
+st.markdown('<div class="container">', unsafe_allow_html=True)
+st.markdown('<h1>Sentiment Studio</h1>', unsafe_allow_html=True)
+st.markdown('<h3>Real-Time Social Media Opinion Dashboard</h3>', unsafe_allow_html=True)
 
-# Title and subtitle
-st.markdown('<h1 class="main-title">💬 Sentiment Studio</h1>', unsafe_allow_html=True)
-st.markdown('<p class="sub-title">Real-Time Social Media Opinion Dashboard<br>Powered by Machine Learning</p>', unsafe_allow_html=True)
+# Buttons in grid
+st.markdown('<div class="button-grid">', unsafe_allow_html=True)
 
-# Buttons container start
-st.markdown('<div class="button-container">', unsafe_allow_html=True)
-
-# Platform buttons
+clicked = None
 if st.button("🐦 Twitter", key="twitter"):
-    st.info("Twitter data fetching coming soon! 🚀")
+    clicked = "Twitter data fetching coming soon! 🚀"
 
 if st.button("👽 Reddit", key="reddit"):
-    st.info("Reddit data fetching coming soon! 🚀")
+    clicked = "Reddit data fetching coming soon! 🚀"
 
 if st.button("📸 Instagram", key="instagram"):
-    st.info("Instagram data fetching coming soon! 🚀")
+    clicked = "Instagram data fetching coming soon! 🚀"
 
 if st.button("🎥 YouTube", key="youtube"):
-    st.info("YouTube data fetching coming soon! 🚀")
+    clicked = "YouTube data fetching coming soon! 🚀"
 
 if st.button("🎵 TikTok", key="tiktok"):
-    st.info("TikTok data fetching coming soon! 🚀")
+    clicked = "TikTok data fetching coming soon! 🚀"
 
 if st.button("💼 LinkedIn", key="linkedin"):
-    st.info("LinkedIn data fetching coming soon! 🚀")
+    clicked = "LinkedIn data fetching coming soon! 🚀"
 
-# Buttons container end
 st.markdown('</div>', unsafe_allow_html=True)
 
-# Main container end
+if clicked:
+    st.markdown(f'<div class="info">{clicked}</div>', unsafe_allow_html=True)
+else:
+    st.markdown('<div class="info">Click any platform to see a preview message.</div>', unsafe_allow_html=True)
+
 st.markdown('</div>', unsafe_allow_html=True)
